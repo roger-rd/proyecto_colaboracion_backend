@@ -1,5 +1,8 @@
 import { handleErrors } from "../database/error.js";
 import { userModel } from "./user.model.js";
+import bcript from "bcryptjs";
+import jwt from "jsonwebtoken";
+
 
 const getRaiz = async (req, res) => {
     try {
@@ -55,14 +58,23 @@ const registerUser = async (req,res) => {
             nombre,
             apellido,
             email,
-            password,
+            password: bcript.hashSync(password, 10),
             altura,
             cintura,
             busto,
             peso,
             state
         })
-        return res.status(201).json({ ok: true, result: newUser });
+        const token = jwt.sign(
+          { email: newUser.email },
+          process.env.JWT_SECRET
+        );
+        const { password: _, ...user } = newUser;
+        return res.status(201).json({
+          user,
+          token,
+        });
+        // return res.status(201).json({ ok: true, result: newUser });
     } catch (error) {
         const { status, message } = handleErrors(error.code);
     console.log(error, message);
@@ -73,10 +85,14 @@ const registerUser = async (req,res) => {
  const loginUser = async (req, res) => { 
     const {email} = req.body;
     try {
-        if(email.length===0){
-            throw {message: "email no registrado"}
-        }
-        return res.status(200).json({ ok: true, message: "Usuario registrado" });
+      if(!email.length===0){
+          throw {message: "email no registrado"}
+      }
+      const token = jwt.sign({ email }, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRATION,
+        });
+        console.log("Token: ", token);
+        return res.status(200).json(token);
     } catch (error) {
         const { status, message } = handleErrors(error.code);
         console.log(error, message);

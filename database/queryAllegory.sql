@@ -7,9 +7,9 @@ CREATE TABLE usuarios (
 	apellido VARCHAR(255) ,
 	email VARCHAR(255) UNIQUE,
 	password VARCHAR(255),
-	  altura DECIMAL,
-	  cintura DECIMAL,
-	  busto DECIMAL, 
+	altura DECIMAL,
+	cintura DECIMAL,
+	busto DECIMAL, 
 	peso DECIMAL,
 	  state VARCHAR(50)
 	);
