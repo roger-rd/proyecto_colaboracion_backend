@@ -7,11 +7,18 @@ CREATE TABLE usuarios (
 	apellido VARCHAR(255) ,
 	email VARCHAR(255) UNIQUE,
 	password VARCHAR(255),
-	altura DECIMAL,
 	cintura DECIMAL,
-	busto DECIMAL, 
+	busto DECIMAL,
+	altura DECIMAL, 
 	peso DECIMAL,
-	  state VARCHAR(50)
+	cadera DECIMAL, 
+	largo_tiro DECIMAL, 
+	largo_pierna DECIMAL, 
+	hombro DECIMAL, 
+	largo_manga DECIMAL, 
+	largo_pie DECIMAL, 
+	empeine DECIMAL, 
+	state VARCHAR(50)
 	);
 	
 
@@ -20,10 +27,17 @@ INSERT INTO usuarios (
 	apellido,
 	email,
 	password,
-	altura,
 	cintura,
 	busto,
+	altura, 
 	peso,
+	cadera, 
+	largo_tiro, 
+	largo_pierna, 
+	hombro, 
+	largo_manga, 
+	largo_pie, 
+	empeine,
 	state)	
 	VALUES (
 		'mariant',
@@ -34,7 +48,15 @@ INSERT INTO usuarios (
 		'155',
 		'70',
 		'100',
+		'50',
+		'155',
+		'70',
+		'100',
+		'100',
+		'50',
+		'155',
+		'70'
 		'tu cuerpo'
-	)
+	);
 
 SELECT * FROM usuarios;
