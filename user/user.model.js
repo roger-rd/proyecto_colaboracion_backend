@@ -29,6 +29,7 @@ const findAll = async () => {
       largo_pie, 
       empeine,
       state} = user;
+      console.log(user);
     const query = 'INSERT INTO usuarios (nombre,apellido,email,password,cintura,busto,altura,peso,cadera,largo_tiro,largo_pierna,hombro,largo_manga,largo_pie,empeine,state) Values ($1, $2, $3, $4, $5, $6, $7, $8, $9,$10,$11,$12,$13,$14,$15,$16) RETURNING *';
     const values = [nombre,apellido,email,password,cintura,busto,altura,peso,cadera,largo_tiro,largo_pierna,hombro,largo_manga,largo_pie,empeine,state];
     const {rows} = await pool.query(query,values)

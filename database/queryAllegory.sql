@@ -60,3 +60,47 @@ INSERT INTO usuarios (
 	);
 
 SELECT * FROM usuarios;
+
+
+
+CREATE TABLE productos (
+	id_producto SERIAL PRIMARY KEY,
+	nombre_producto VARCHAR(255) ,
+	 tipo_producto VARCHAR(255) ,
+	stok INTEGER,
+	precio FLOAT,
+	 ubicacion VARCHAR(255) ,
+	 img_url VARCHAR(255) ,
+	 talla VARCHAR(255) ,
+	 pecho VARCHAR(255) ,
+	 cintura VARCHAR(255) ,
+	 color VARCHAR(60),
+	);
+	
+
+INSERT INTO productos (
+	nombre_producto,
+	 tipo_producto,
+	stok,
+	precio,
+	 ubicacion,
+	 img_url,
+	 talla, 
+	 pecho,
+	 cintura,
+	 color)	
+	VALUES (
+		'Apology Blazer Mujer',
+		'blazer',
+		10,
+		39990,
+		'https://www.falabella.com/falabella-cl/product/882760208/Apology-Blazer-Mujer/882797758?exp=tienda',
+		'https://falabella.scene7.com/is/image/Falabella/882797758_1?wid=1500&hei=1500&qlt=70',
+		'm',
+		'99',
+		'80',
+		'verde'
+	);
+
+
+	SELECT * FROM productos;
